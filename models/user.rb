@@ -51,28 +51,23 @@ class User
   end
 
   def all_transactions()
-    sql = "SELECT * FROM transactions"
-    # create parameters to pass into the query string
-    # return array of hases by executing the query using the sql_runner.rb run method
-    # use the map() method to convert to an array of transaction objects
+    sql = "SELECT * FROM transactions WHERE user_id = $1"
+    values = [@id]
+    results = SqlRunner.run( sql, values )
+    return results.map { |transaction| Transaction.new( transaction )}
   end
+
+  
+
+
+
+  # ******* EXTENSIONS *********
 
   # return all_transactions_by_month instance method
   # create query string to return all transactions by month
   # create parameters to pass into the query string
   # return array of hases by executing the query using the sql_runner.rb run method
   # use the map() method to convert to an array of transaction objects
-
-  # return all_transactions_by_tag instance method
-  # create query string to return all transactions by tag
-  # create parameters to pass into the query string
-  # return array of hases by executing the query using the sql_runner.rb run method
-  # use the map() method to convert to an array of transaction objects
-
-  # return total_spend instance method
-  # call all_transactions method
-  # sum() all transactions
-  # return sum
 
   # return total_spend_by_month instance method
   # call all_transactions_by_month
