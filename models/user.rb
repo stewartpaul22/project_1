@@ -19,11 +19,6 @@ class User
     @id = results.first()['id'].to_i
   end
 
-  def self.delete_all()
-    sql = "DELETE FROM users"
-    SqlRunner.run( sql )
-  end
-
   def update()
     sql = "UPDATE users SET (name, net_monthly_income, monthly_budget) = ($1, $2, $3) WHERE id = $4"
     values = [@name, @net_monthly_income, @monthly_budget, @id]
@@ -36,10 +31,24 @@ class User
     return results.map { |user| User.new( user ) }
   end
 
-  # delete_user instance method
-    # create query string to delete user
-    # create parameters to pass into the query string
-    # execute the query using the sql_runner.rb run method
+  def self.find(id)
+    sql = "SELECT * FROM users WHERE id = $1"
+    values = [id]
+    results = SqlRunner.run( sql, values )
+    return User.new( results.first() )
+    # should there be an way to handle nil values if id is nil?
+  end
+
+  def self.delete(id)
+    sql = "DELETE FROM users WHERE id = $1"
+    values = [id]
+    SqlRunner.run( sql, values )
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM users"
+    SqlRunner.run( sql )
+  end
 
   # return all_transactions instance method
     # create query string to return all transactions
