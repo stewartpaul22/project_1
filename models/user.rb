@@ -2,7 +2,8 @@ require_relative('../db/sql_runner')
 
 class User
 
-  attr_reader :id, :name, :net_monthly_income, :monthly_budget
+  attr_reader :id
+  attr_accessor :name, :net_monthly_income, :monthly_budget
 
   def initialize( options )
     @id = options['id'].to_i if options['id']
@@ -20,13 +21,17 @@ class User
 
   def self.delete_all()
     sql = "DELETE FROM users"
-    SqlRunner.run(sql)
+    SqlRunner.run( sql )
   end
 
-  # update_user instance method
+  def update()
     # create query string to update user
+    sql = "UPDATE users SET (name, net_monthly_income, monthly_budget) = ($1, $2, $3) WHERE id = $4"
     # create parameters to pass into the query string
+    values = [@name, @net_monthly_income, @monthly_budget, @id]
     # execute the query using the sql_runner.rb run method
+    SqlRunner.run( sql, values )
+  end
 
   # return all users class method
     # create query string to return all users
