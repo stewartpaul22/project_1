@@ -2,18 +2,26 @@ require_relative('../db/sql_runner')
 
 class User
 
+  attr_reader :id, :name, :net_monthly_income, :monthly_budget
+
   def initialize( options )
     @id = options['id'].to_i if options['id']
     @name = options['name']
-    @net_monthly_income = options['net_monthly_income'].to_f
-    @monthly_budget = options['monthly_budget'].to_f
+    @net_monthly_income = options['net_monthly_income']
+    @monthly_budget = options['monthly_budget']
   end
 
-  # add_user class method
-    # create query string to insert/create user
-    # create parameters to pass into the query string
-    # execute the query using the sql_runner.rb run method
-    # return the @id from the new db entry
+  def save()
+    sql = "INSERT INTO users (name, net_monthly_income, monthly_budget) VALUES ($1, $2, $3) RETURNING id"
+    values = [@name, @net_monthly_income, @monthly_budget]
+    results = SqlRunner.run( sql, values )
+    @id = results.first()['id'].to_i
+  end
+
+  # delete_all_users instance method
+  # create query string to delete user
+  # create parameters to pass into the query string
+  # execute the query using the sql_runner.rb run method
 
   # update_user instance method
     # create query string to update user
