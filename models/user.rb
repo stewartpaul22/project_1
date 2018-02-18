@@ -71,7 +71,12 @@ class User
     return total.to_f
   end
 
-  
+  def total_spent_by_tag(tag_id)
+    transactions = all_transactions_by_tag(tag_id)
+    total = 0
+    transactions.each { |transaction| total += transaction.amount }
+    return total.to_f
+  end
 
 
 
