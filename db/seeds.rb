@@ -5,6 +5,8 @@ require_relative('../models/tag.rb')
 require_relative('../models/transaction.rb')
 
 User.delete_all()
+Tag.delete_all()
+Transaction.delete_all()
 
 user1 = User.new({
   "name" => "Paul",
@@ -50,6 +52,24 @@ tag5.save()
 
 tag5.category = "household"
 tag5.update()
+
+transaction1 = Transaction.new({
+  "merchant_name" => "ASDA",
+  "amount" => 13.77,
+  "transaction_date" => "2018-02-14",
+  "tag_id" => 5
+  })
+
+transaction1.save()
+
+transaction2 = Transaction.new({
+  "merchant_name" => "Tinderbox",
+  "amount" => 2.50,
+  "transaction_date" => "2018-02-02",
+  "tag_id" => 3
+  })
+
+transaction2.save()
 
 binding.pry
 nil
