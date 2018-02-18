@@ -12,6 +12,14 @@ user1 = User.new({
 
 user1.save()
 
+user2 = User.new({
+  "name" => "Jeff",
+  "net_monthly_income" => 2_304.23,
+  "monthly_budget" => 1_850.00
+  })
+
+user2.save()
+
 user1.name = "John"
 user1.net_monthly_income = 1_790.88
 user1.monthly_budget = 1_000.00

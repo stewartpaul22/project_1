@@ -25,19 +25,16 @@ class User
   end
 
   def update()
-    # create query string to update user
     sql = "UPDATE users SET (name, net_monthly_income, monthly_budget) = ($1, $2, $3) WHERE id = $4"
-    # create parameters to pass into the query string
     values = [@name, @net_monthly_income, @monthly_budget, @id]
-    # execute the query using the sql_runner.rb run method
     SqlRunner.run( sql, values )
   end
 
-  # return all users class method
-    # create query string to return all users
-    # create parameters to pass into the query string
-    # return array of hases by executing the query using the sql_runner.rb run method
-    # use the map() method to convert to an array of User objects
+  def self.all()
+    sql = "SELECT * FROM users"
+    results = SqlRunner.run( sql )
+    return results.map { |user| User.new( user ) }
+  end
 
   # delete_user instance method
     # create query string to delete user
