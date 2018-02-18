@@ -64,6 +64,13 @@ class User
     return results.map { |transaction| Transaction.new( transaction )}
   end
 
+  def total_spent()
+    transactions = all_transactions()
+    total = 0
+    transactions.each { |transaction| total += transaction.amount }
+    return total.to_f
+  end
+
   
 
 
