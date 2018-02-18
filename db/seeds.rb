@@ -48,5 +48,8 @@ tag5 = Tag.new({
   })
 tag5.save()
 
+tag5.category = "household"
+tag5.update()
+
 binding.pry
 nil
