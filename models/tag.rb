@@ -34,7 +34,6 @@ class Tag
     values = [id]
     results = SqlRunner.run( sql, values )
     return Tag.new( results.first() )
-    # should there be an way to handle nil values if id is nil?
   end
 
   def self.delete(id)

@@ -4,7 +4,7 @@ require_relative('../db/sql_runner')
 class Transaction
 
   attr_reader :id
-  attr_accessor :merchant_name, :amount, :transaction_date, :tag_id
+  attr_accessor :merchant_name, :amount, :transaction_date, :tag_id, :user_id
 
   def initialize( options )
     @id = options['id'].to_i if options['id']
@@ -12,18 +12,19 @@ class Transaction
     @amount = options['amount']
     @transaction_date = options['transaction_date']
     @tag_id = options['tag_id'].to_i
+    @user_id = options['user_id'].to_i
   end
 
   def save()
-    sql = "INSERT INTO transactions (merchant_name, amount, transaction_date, tag_id) VALUES ($1, $2, $3, $4) RETURNING id"
-    values = [@merchant_name, @amount, @transaction_date, @tag_id]
+    sql = "INSERT INTO transactions (merchant_name, amount, transaction_date, tag_id, user_id) VALUES ($1, $2, $3, $4, $5) RETURNING id"
+    values = [@merchant_name, @amount, @transaction_date, @tag_id, @user_id]
     results = SqlRunner.run( sql, values )
     @id = results.first()['id'].to_i
   end
 
   def update()
-    sql = "UPDATE transactions SET (merchant_name, amount, transaction_date, tag_id) = ($1, $2, $3, $4) WHERE id = $5"
-    values = [@merchant_name, @amount, @transaction_date, @tag_id, @id]
+    sql = "UPDATE transactions SET (merchant_name, amount, transaction_date, tag_id, user_id) = ($1, $2, $3, $4, $5) WHERE id = $6"
+    values = [@merchant_name, @amount, @transaction_date, @tag_id, @user_id, @id]
     SqlRunner.run( sql, values )
   end
 
@@ -38,7 +39,6 @@ class Transaction
     values = [id]
     results = SqlRunner.run( sql, values )
     return Transaction.new( results.first() )
-    # should there be an way to handle nil values if id is nil?
   end
 
   def self.delete(id)

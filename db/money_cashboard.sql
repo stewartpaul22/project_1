@@ -19,5 +19,6 @@ CREATE TABLE transactions (
   merchant_name VARCHAR(100),
   amount MONEY NOT NULL,
   transaction_date DATE,
-  tag_id INT REFERENCES tags(id)
+  tag_id INT REFERENCES tags(id),
+  user_id INT REFERENCES users(id)
 );

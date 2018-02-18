@@ -50,33 +50,34 @@ class User
     SqlRunner.run( sql )
   end
 
-  # return all_transactions instance method
-    # create query string to return all transactions
+  def all_transactions()
+    sql = "SELECT * FROM transactions"
     # create parameters to pass into the query string
     # return array of hases by executing the query using the sql_runner.rb run method
     # use the map() method to convert to an array of transaction objects
+  end
 
   # return all_transactions_by_month instance method
-    # create query string to return all transactions by month
-    # create parameters to pass into the query string
-    # return array of hases by executing the query using the sql_runner.rb run method
-    # use the map() method to convert to an array of transaction objects
+  # create query string to return all transactions by month
+  # create parameters to pass into the query string
+  # return array of hases by executing the query using the sql_runner.rb run method
+  # use the map() method to convert to an array of transaction objects
 
   # return all_transactions_by_tag instance method
-    # create query string to return all transactions by tag
-    # create parameters to pass into the query string
-    # return array of hases by executing the query using the sql_runner.rb run method
-    # use the map() method to convert to an array of transaction objects
+  # create query string to return all transactions by tag
+  # create parameters to pass into the query string
+  # return array of hases by executing the query using the sql_runner.rb run method
+  # use the map() method to convert to an array of transaction objects
 
   # return total_spend instance method
-    # call all_transactions method
-    # sum() all transactions
-    # return sum
+  # call all_transactions method
+  # sum() all transactions
+  # return sum
 
   # return total_spend_by_month instance method
-    # call all_transactions_by_month
-    # sum() all transactions
-    # return sum
+  # call all_transactions_by_month
+  # sum() all transactions
+  # return sum
 
 
 

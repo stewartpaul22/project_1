@@ -57,7 +57,8 @@ transaction1 = Transaction.new({
   "merchant_name" => "ASDA",
   "amount" => 13.77,
   "transaction_date" => "2018-02-14",
-  "tag_id" => 5
+  "tag_id" => tag5.id,
+  "user_id" => user1.id
   })
 
 transaction1.save()
@@ -66,10 +67,21 @@ transaction2 = Transaction.new({
   "merchant_name" => "Tinderbox",
   "amount" => 2.50,
   "transaction_date" => "2018-02-02",
-  "tag_id" => 3
+  "tag_id" => tag3.id,
+  "user_id" => user1.id
   })
 
 transaction2.save()
+
+transaction3 = Transaction.new({
+  "merchant_name" => "Aldi",
+  "amount" => 29.95,
+  "transaction_date" => "2017-12-31",
+  "tag_id" => tag3.id,
+  "user_id" => user2.id
+  })
+
+transaction3.save()
 
 binding.pry
 nil
