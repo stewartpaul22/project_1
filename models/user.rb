@@ -57,6 +57,13 @@ class User
     return results.map { |transaction| Transaction.new( transaction )}
   end
 
+  def all_transactions_by_tag(tag_id)
+    sql = "SELECT * FROM transactions WHERE (user_id = $1 AND tag_id = $2)"
+    values = [@id, tag_id]
+    results = SqlRunner.run( sql, values )
+    return results.map { |transaction| Transaction.new( transaction )}
+  end
+
   
 
 
