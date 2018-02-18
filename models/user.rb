@@ -18,10 +18,10 @@ class User
     @id = results.first()['id'].to_i
   end
 
-  # delete_all_users instance method
-  # create query string to delete user
-  # create parameters to pass into the query string
-  # execute the query using the sql_runner.rb run method
+  def self.delete_all()
+    sql = "DELETE FROM users"
+    SqlRunner.run(sql)
+  end
 
   # update_user instance method
     # create query string to update user

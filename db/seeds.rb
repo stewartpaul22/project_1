@@ -2,6 +2,8 @@ require('pry')
 
 require_relative('../models/user.rb')
 
+User.delete_all()
+
 user1 = User.new({
   "name" => "Paul",
   "net_monthly_income" => 1_610.67,
