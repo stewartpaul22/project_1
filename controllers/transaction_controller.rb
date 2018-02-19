@@ -11,3 +11,8 @@ get '/transactions' do
   @transactions = user.all_transactions()
   erb( :"transactions/index" )
 end
+
+get '/transactions/new' do
+  @tags = Tag.all()
+  erb( :"transactions/new")
+end

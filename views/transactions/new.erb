@@ -1,0 +1,22 @@
+<form action="/transactions" method="post">
+
+  <label for="merchant_name">Merchant name: </label>
+  <input type="text" name="merchant_name" id="merchant_name" required />
+
+  <label for="amount">Amount: </label>
+  <input type="text" name="amount" id="amount" required />
+
+  <label for="category-select">Select Category: </label>
+  <select name="tag_id">
+    <% @tags.each do |tag| %>
+    <option value="<%= tag.id %>" id="tag_id"><%= tag.category %></option>
+    <% end %>
+  </select>
+
+  <label for="transaction_date">Transaction Date: </label>
+  <!-- <input type="number" name="age" id="age" required /> -->
+
+  <input class="button" type="submit" value="Add Transaction" />
+
+
+</form>
