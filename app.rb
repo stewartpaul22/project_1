@@ -9,7 +9,7 @@ require_relative( './models/tag.rb' )
 
 get '/' do
   user = User.find(1)
-  @total_spent = user.total_spent()
-  @remaining_funds = user.budget_remaining()
+  @total_spent = user.total_spent().round(2)
+  @remaining_funds = user.budget_remaining().round(2)
   erb( :index )
 end

@@ -14,7 +14,8 @@ class Transaction
     @amount = options['amount'].to_f
     @transaction_date = Date.parse(options['transaction_date'])
     @tag_id = options['tag_id'].to_i
-    @user_id = options['user_id'].to_i
+    # @user_id = options['user_id'].to_i
+    @user_id = 1
   end
 
   def save()

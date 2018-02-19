@@ -78,7 +78,7 @@ transaction3 = Transaction.new({
   "amount" => 29.95,
   "transaction_date" => "2017-12-31",
   "tag_id" => tag3.id,
-  "user_id" => user2.id
+  "user_id" => user1.id
   })
 
 transaction3.save()
