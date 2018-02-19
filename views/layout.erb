@@ -5,16 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>MoneyCashboard</title>
+  <link rel="stylesheet" type="text/css" href="/styles/style.css">
 </head>
 <body>
-  <%= yield %>
   <nav>
     <ul>
-      <li><a href="/transactions">See what you've bought</a></li>
-      <li><a href="/transactions/new">Spent again?</a></li>
-      <li><a href="/transactions/tag">What stuff have you been buying?</a></li>
-      <li><a href="/transactions">See all spending per month</a></li>
+      <li><a href="/transactions">All Transactions</a></li>
+      <li><a href="/transactions/new">Add Transaction</a></li>
+      <li><a href="/transactions/tag">Transactions by Tag</a></li>
+      <!-- <li><a href="/transactions">See all spending per month</a></li> -->
     </ul>
   </nav>
+  <%= yield %>
 </body>
 </html>

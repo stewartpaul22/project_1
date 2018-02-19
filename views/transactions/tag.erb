@@ -1,5 +1,8 @@
-<h2>You've spent £<%= '%.2f' % @total_spent %></h2>
-<h2>Budget remaining £<%= '%.2f' % @remaining_funds %></h2>
+<header>
+  <h2>You've spent £<%= '%.2f' % @total_spent %></h2>
+  <h2>Budget remaining £<%= '%.2f' % @remaining_funds %></h2>
+</header>
+
 
 <form action="/transactions/tag" method="get">
   <label for="category-select">Category</label>

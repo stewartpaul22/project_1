@@ -1,10 +1,23 @@
-<h2>You've spent £<%= '%.2f' % @total_spent %></h2>
-<h2>Budget remaining £<%= '%.2f' % @remaining_funds %></h2>
-<% @transactions.each do |transaction| %>
-<article>
-  <p>Amount: £<%= '%.2f' % transaction.amount %></p>
-  <p>Merchant: <%= transaction.merchant_name %></p>
-  <p>Date: <%= transaction.transaction_date %></p>
-  <p>Category: <%= transaction.tag %></p>
-</article>
-<% end %>
+<header>
+  <h2>You've spent £<%= '%.2f' % @total_spent %></h2>
+  <h2>Budget remaining £<%= '%.2f' % @remaining_funds %></h2>
+</header>
+
+<div class="main">
+  <table class="transactions">
+    <tr>
+      <th>Amount</th>
+      <th>Merchant</th>
+      <th>Date</th>
+      <th>Category</th>
+    </tr>
+    <% @transactions.each do |transaction| %>
+    <tr>
+      <td>£<%= '%.2f' % transaction.amount %></td>
+      <td><%= transaction.merchant_name %></td>
+      <td><%= transaction.transaction_date %></td>
+      <td><%= transaction.tag %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
