@@ -7,7 +7,14 @@
   <title>MoneyCashboard</title>
 </head>
 <body>
-  <h1>Total spent: £<%= @total_spent %></h1>
   <%= yield %>
+  <nav>
+    <ul>
+      <li><a href="/transactions">View All Transactions</a></li>
+      <li><a href="/transactions">Add New Transaction </a></li>
+      <li><a href="/transactions">View Total Spent By Tag </a></li>
+      <li><a href="/transactions">View Total Spent By Month </a></li>
+    </ul>
+  </nav>
 </body>
 </html>

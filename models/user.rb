@@ -9,7 +9,7 @@ class User
     @id = options['id'].to_i if options['id']
     @name = options['name']
     @net_monthly_income = options['net_monthly_income']
-    @monthly_budget = options['monthly_budget']
+    @monthly_budget = options['monthly_budget'].to_f
   end
 
   def save()
@@ -69,6 +69,11 @@ class User
     total = 0
     transactions.each { |transaction| total += transaction.amount }
     return total.to_f
+  end
+
+  def budget_remaining()
+    total_spent = total_spent()
+    return (@monthly_budget -= total_spent)
   end
 
   def total_spent_by_tag(tag_id)
