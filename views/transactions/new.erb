@@ -1,3 +1,6 @@
+<h2>You've spent £<%= @total_spent %></h2>
+<h2>Budget remaining £<%= @remaining_funds %></h2>
+
 <form action="/transactions" method="post">
 
   <label for="merchant_name">Merchant name: </label>
@@ -8,6 +11,7 @@
 
   <label for="category-select">Select Category: </label>
   <select name="tag_id">
+    <option value="" disabled selected>Choose a category</option>
     <% @tags.each do |tag| %>
     <option value="<%= tag.id %>" id="tag_id"><%= tag.category %></option>
     <% end %>

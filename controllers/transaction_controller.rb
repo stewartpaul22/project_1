@@ -13,6 +13,9 @@ get '/transactions' do
 end
 
 get '/transactions/new' do
+  user = User.find(1)
+  @total_spent = user.total_spent().round(2)
+  @remaining_funds = user.budget_remaining().round(2)
   @tags = Tag.all()
   erb( :"transactions/new")
 end
@@ -29,7 +32,10 @@ get '/transactions/tag' do
 end
 
 post '/transactions' do
+  user = User.find(1)
   @transaction = Transaction.new(params)
   @transaction.save()
+  @total_spent = user.total_spent().round(2)
+  @remaining_funds = user.budget_remaining().round(2)
   erb( :"transactions/create")
 end

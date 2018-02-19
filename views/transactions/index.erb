@@ -1,8 +1,8 @@
-<h1>You've spent: £<%= @total_spent %></h1>
-<h1>Budget remaining: £<%= @remaining_funds %></h1>
+<h2>You've spent £<%= '%.2f' % @total_spent %></h2>
+<h2>Budget remaining £<%= '%.2f' % @remaining_funds %></h2>
 <% @transactions.each do |transaction| %>
 <article>
-  <p>Amount: £<%= transaction.amount %></p>
+  <p>Amount: £<%= '%.2f' % transaction.amount %></p>
   <p>Merchant: <%= transaction.merchant_name %></p>
   <p>Date: <%= transaction.transaction_date %></p>
   <p>Category: <%= transaction.tag %></p>
