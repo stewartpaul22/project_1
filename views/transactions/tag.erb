@@ -1,0 +1,22 @@
+<h1>Total spent: £<%= @total_spent %></h1>
+<h1>Budget remaining: £<%= @remaining_funds %></h1>
+
+<label for="category-select">Transactions by: </label>
+
+<select name="tag_id">
+  <% @tags.each do |tag| %>
+    <% if @chosen_tag == tag %>
+      <option value="<%= tag.id %>" id="tag_id" selected><%= tag.category %></option>
+    <% else %>
+      <option value="<%= tag.id %>" id="tag_id"><%= tag.category %></option>
+    <% end %>
+  <% end %>
+</select>
+
+<% @transactions.each do |transaction| %>
+<article>
+  <p>Amount: £<%= transaction.amount %></p>
+  <p>Merchant: <%= transaction.merchant_name %></p>
+  <p>Date: <%= transaction.transaction_date %></p>
+</article>
+<% end %>

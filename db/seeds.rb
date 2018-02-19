@@ -49,9 +49,13 @@ tag5 = Tag.new({
   "category" => "groceries"
   })
 tag5.save()
+tag6 = Tag.new({
+  "category" => "pubs/restaurants/cafes"
+  })
+tag6.save()
 
-tag5.category = "household"
-tag5.update()
+# tag5.category = "household"
+# tag5.update()
 
 transaction1 = Transaction.new({
   "merchant_name" => "ASDA",
@@ -67,7 +71,7 @@ transaction2 = Transaction.new({
   "merchant_name" => "Tinderbox",
   "amount" => 2.50,
   "transaction_date" => "2018-02-02",
-  "tag_id" => tag3.id,
+  "tag_id" => tag6.id,
   "user_id" => user1.id
   })
 
@@ -77,7 +81,7 @@ transaction3 = Transaction.new({
   "merchant_name" => "Aldi",
   "amount" => 29.95,
   "transaction_date" => "2017-12-31",
-  "tag_id" => tag3.id,
+  "tag_id" => tag5.id,
   "user_id" => user1.id
   })
 

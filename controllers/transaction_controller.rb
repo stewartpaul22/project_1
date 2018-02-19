@@ -17,8 +17,17 @@ get '/transactions/new' do
   erb( :"transactions/new")
 end
 
+get '/transactions/tag/:id' do
+  user = User.find(1)
+  @total_spent = user.total_spent().round(2)
+  @remaining_funds = user.budget_remaining().round(2)
+  @tags = Tag.all()
+  @chosen_tag = @tags[(params[:id].to_i) - 1]
+  @transactions = user.all_transactions_by_tag(params[:id])
+  erb( :"transactions/tag")
+end
+
 post '/transactions' do
-  # user = User.find(1)
   @transaction = Transaction.new(params)
   @transaction.save()
   erb( :"transactions/create")
