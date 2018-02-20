@@ -106,7 +106,7 @@ li a {
   display: inline-block;
   text-decoration: none;
   text-align: center;
-  padding: 14px 16px;
+  padding: 14px 11px;
 }
 
 li a:hover {
@@ -123,7 +123,6 @@ li a:hover {
 .main p {
   padding: 10px;
   font-size: 1.4em;
-  text-align: left;
 }
 
 .main a:link, a:visited {
@@ -196,7 +195,7 @@ select.inline {
 
 input[type=button], input[type=submit], input[type=reset] {
   background-color: #97c9ac;
-  border: 1px solid #ddd;
+  border: 1px solid #888;
   color: white;
   padding: 8px 22px;
   text-decoration: none;
@@ -230,6 +229,11 @@ input[type=submit]:hover {
 
 .bold {
   font-weight: bold;
+}
+
+.bold_logo {
+  font-weight: bold;
+  color: #97c9ac;
 }
 
 footer {
