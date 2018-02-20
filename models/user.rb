@@ -51,14 +51,14 @@ class User
   end
 
   def all_transactions()
-    sql = "SELECT * FROM transactions WHERE user_id = $1"
+    sql = "SELECT * FROM transactions WHERE user_id = $1 ORDER BY transaction_date ASC"
     values = [@id]
     results = SqlRunner.run( sql, values )
     return results.map { |transaction| Transaction.new( transaction )}
   end
 
   def all_transactions_by_tag(tag_id)
-    sql = "SELECT * FROM transactions WHERE (user_id = $1 AND tag_id = $2)"
+    sql = "SELECT * FROM transactions WHERE (user_id = $1 AND tag_id = $2) ORDER BY transaction_date ASC"
     values = [@id, tag_id]
     results = SqlRunner.run( sql, values )
     return results.map { |transaction| Transaction.new( transaction )}
@@ -84,7 +84,7 @@ class User
   end
   # ******* EXTENSIONS *********
   def all_transactions_by_month(month)
-    sql = "SELECT * FROM transactions WHERE date_part('month', transaction_date) = $1"
+    sql = "SELECT * FROM transactions WHERE date_part('month', transaction_date) = $1 ORDER BY transaction_date ASC"
     values = [month]
     results = SqlRunner.run( sql, values )
     return results.map { |transaction| Transaction.new( transaction )}

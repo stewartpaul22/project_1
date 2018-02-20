@@ -80,7 +80,7 @@ transaction2.save()
 transaction3 = Transaction.new({
   "merchant_name" => "Aldi",
   "amount" => 29.95,
-  "transaction_date" => "2017-12-31",
+  "transaction_date" => "2017-11-21",
   "tag_id" => tag5.id,
   "user_id" => user1.id
   })
@@ -100,7 +100,7 @@ transaction4.save()
 transaction5 = Transaction.new({
   "merchant_name" => "Cineworld",
   "amount" => 21.60,
-  "transaction_date" => "2018-01-13",
+  "transaction_date" => "2017-12-13",
   "tag_id" => tag3.id,
   "user_id" => user1.id
   })
@@ -140,7 +140,7 @@ transaction8.save()
 transaction9 = Transaction.new({
   "merchant_name" => "Tinderbox",
   "amount" => 2.25,
-  "transaction_date" => "2018-01-13",
+  "transaction_date" => "2017-11-13",
   "tag_id" => tag6.id,
   "user_id" => user1.id
   })
