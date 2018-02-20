@@ -78,14 +78,14 @@ header > h2.remaining {
 header > h2.remaining_amber {
   padding: 10px 0;
   font-size: 1.3em;
-  background-color: orange;
+  background-color: #ea9010;
   border-bottom: 1px solid #aaa;
 }
 
 header > h2.remaining_red {
   padding: 10px 0;
   font-size: 1.3em;
-  background-color: red;
+  background-color: #dc493a;
   border-bottom: 1px solid #aaa;
 }
 

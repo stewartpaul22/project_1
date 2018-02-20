@@ -15,6 +15,7 @@ end
 
 get '/transactions/new' do
   user = User.find(1)
+  @monthly_budget = user.monthly_budget.round(2)
   @total_spent = user.total_spent().round(2)
   @remaining_funds = user.budget_remaining().round(2)
   @tags = Tag.all()
@@ -23,6 +24,7 @@ end
 
 get '/transactions/tag' do
   user = User.find(1)
+  @monthly_budget = user.monthly_budget.round(2)
   @total_spent = user.total_spent().round(2)
   @remaining_funds = user.budget_remaining().round(2)
   @tags = Tag.all()
@@ -34,6 +36,7 @@ end
 
 post '/transactions' do
   user = User.find(1)
+  @monthly_budget = user.monthly_budget.round(2)
   @transaction = Transaction.new(params)
   @transaction.save()
   @total_spent = user.total_spent().round(2)

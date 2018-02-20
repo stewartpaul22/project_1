@@ -1,6 +1,12 @@
 <header>
-  <h2 class="spent">You've spent £<%= '%.2f' % @total_spent %></h2>
-  <h2 class="remaining">Budget remaining £<%= '%.2f' % @remaining_funds %></h2>
+  <h2 class="spent">You've spent <span class="bold">£<%= '%.2f' % @total_spent %></span></h2>
+  <% if @remaining_funds < 0 %>
+  <h2 class="remaining_red">Budget remaining <span class="bold">£<%= '%.2f' % @remaining_funds %></span></h2>
+  <% elsif @remaining_funds < (@monthly_budget / 2) %>
+    <h2 class="remaining_amber">Budget remaining <span class="bold">£<%= '%.2f' % @remaining_funds %></span></h2>
+  <% else %>
+    <h2 class="remaining">Budget remaining <span class="bold">£<%= '%.2f' % @remaining_funds %></span></h2>
+  <% end %>
 </header>
 
 <div class="main">
@@ -8,7 +14,7 @@
   <form action="/transactions" method="post">
 
     <label for="merchant_name">Merchant name: </label>
-    <input type="text" name="merchant_name" id="merchant_name" placeholder="e.g. ASDA" required />
+    <input type="text" name="merchant_name" id="merchant_name" placeholder="e.g. ASDA" autofocus required />
 
     <label for="amount">Amount: </label>
     <input type="text" name="amount" id="amount" placeholder="e.g. 15.55" required />
