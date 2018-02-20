@@ -1,10 +1,27 @@
-<h2>You've spent £<%= '%.2f' % @total_spent %></h2>
-<h2>Budget remaining £<%= '%.2f' % @remaining_funds %></h2>
+<header>
+  <h2 class="spent">You've spent £<%= '%.2f' % @total_spent %></h2>
+  <h2 class="remaining">Budget remaining £<%= '%.2f' % @remaining_funds %></h2>
+</header>
 
-<p>Transaction added successfully</p>
-<article>
-  <p>Amount: £<%= @transaction.amount %></p>
-  <p>Merchant: <%= @transaction.merchant_name %></p>
-  <p>Date: <%= @transaction.transaction_date %></p>
-  <p>Category: <%= @transaction.tag %></p>
-</article>
+<div class="main">
+
+  <section class="category">
+    <h3>Transaction added successfully</h3>
+  </section>
+
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Merchant</th>
+      <th>Amount</th>
+      <th>Category</th>
+    </tr>
+    <tr>
+      <td><%= @transaction.transaction_date %></td>
+      <td><%= @transaction.merchant_name %></td>
+      <td>£<%= '%.2f' % @transaction.amount %></td>
+      <td><%= @transaction.tag %></td>
+    </tr>
+  </table>
+
+</div>

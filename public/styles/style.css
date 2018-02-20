@@ -58,19 +58,29 @@ body {
 header {
   background-color: #f1f1f1;
   text-align: center;
-  padding: 10px;
-  font-size: 2em;
 }
 
-header > h2 {
-  padding: 10px;
+header > h2.spent {
+  padding: 10px 0;
+  font-size: 1.3em;
+  background-color: #ddd;
+  border-bottom: 1px solid #aaa;
+
+}
+
+header > h2.remaining {
+  padding: 10px 0;
+  font-size: 1.3em;
+  background-color: #7dc95e;
+  border-bottom: 1px solid #aaa;
+
 }
 
 nav {
   background-color: #f1f1f1;
   padding: 0;
   text-align: center;
-  border-bottom: 1px solid White;
+  border-bottom: 1px solid #aaa;
 }
 
 li {
@@ -86,7 +96,7 @@ li a {
 }
 
 li a:hover {
-  background-color: #eeeeee;
+  background-color: #ddd;
 }
 
 .main {
@@ -95,11 +105,35 @@ li a:hover {
   text-align: center;
 }
 
-.transactions {
+table {
   margin: auto;
-  width: 50%;
+  width: 100%;
   text-align: center;
-  font-size: .75em;
+  font-size: .9em;
+}
+
+th {
+  font-weight: bold;
+}
+
+th, td {
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+.category {
+  padding: 7px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.category h3 {
+  font-size: 1.2em;
+}
+
+.category h4 {
+  font-size: 1.1em;
 }
 
 .row {
@@ -115,6 +149,55 @@ li a:hover {
   -ms-flex: 1;
   flex: 1;
   padding: 10px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+select {
+  width: 90%;
+  padding: 8px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+}
+
+select.inline {
+  width: 55%;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: #7dc95e;
+  border: 1px solid #ddd;
+  color: white;
+  padding: 10px 22px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+input[type=text] {
+  background-color: #ddd;
+  border: 1px solid #7dc95e;
+  color: #000;
+  padding: 10px 22px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  width: 90%;
+  font-size: .9em;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 @media (max-width: 600px) {

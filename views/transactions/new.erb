@@ -1,29 +1,31 @@
 <header>
-  <h2>You've spent £<%= '%.2f' % @total_spent %></h2>
-  <h2>Budget remaining £<%= '%.2f' % @remaining_funds %></h2>
+  <h2 class="spent">You've spent £<%= '%.2f' % @total_spent %></h2>
+  <h2 class="remaining">Budget remaining £<%= '%.2f' % @remaining_funds %></h2>
 </header>
 
+<div class="main">
 
-<form action="/transactions" method="post">
+  <form action="/transactions" method="post">
 
-  <label for="merchant_name">Merchant name: </label>
-  <input type="text" name="merchant_name" id="merchant_name" required />
+    <label for="merchant_name">Merchant name: </label>
+    <input type="text" name="merchant_name" id="merchant_name" placeholder="e.g. ASDA" required />
 
-  <label for="amount">Amount: </label>
-  <input type="text" name="amount" id="amount" required />
+    <label for="amount">Amount: </label>
+    <input type="text" name="amount" id="amount" placeholder="e.g. 15.55" required />
 
-  <label for="category-select">Select Category: </label>
-  <select name="tag_id">
-    <option value="" disabled selected>Choose a category</option>
-    <% @tags.each do |tag| %>
-    <option value="<%= tag.id %>" id="tag_id"><%= tag.category %></option>
-    <% end %>
-  </select>
+    <label for="category-select">Select Category: </label>
+    <select name="tag_id">
+      <option value="" disabled selected>Choose a category</option>
+      <% @tags.each do |tag| %>
+      <option value="<%= tag.id %>" id="tag_id"><%= tag.category %></option>
+      <% end %>
+    </select>
 
-  <label for="transaction_date">Transaction Date: </label>
-  <input type="text" name="transaction_date" id="transaction_date" value="<%= DateTime.now.to_date %>" required />
+    <label for="transaction_date">Transaction Date: </label>
+    <input type="text" name="transaction_date" id="transaction_date" value="<%= DateTime.now.to_date %>" required />
 
-  <input class="button" type="submit" value="Add Transaction" />
+    <input class="button" type="submit" value="Add Transaction" />
 
+  </form>
 
-</form>
+</div>

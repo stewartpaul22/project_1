@@ -1,27 +1,46 @@
 <header>
-  <h2>You've spent £<%= '%.2f' % @total_spent %></h2>
-  <h2>Budget remaining £<%= '%.2f' % @remaining_funds %></h2>
+  <h2 class="spent">You've spent <span class="bold">£<%= '%.2f' % @total_spent %></span></h2>
+  <h2 class="remaining">Budget remaining <span class="bold">£<%= '%.2f' % @remaining_funds %></span></h2>
 </header>
 
+<div class="main">
 
-<form action="/transactions/tag" method="get">
-  <label for="category-select">Category</label>
-  <select name="tag_id">
-    <option value="" disabled selected>Choose a category</option>
-    <% @tags.each do |tag| %>
-    <option value="<%= tag.id %>" id="tag_id"><%= tag.category %></option>
+  <section class="category">
+    <h3>Transactions by Category</h3>
+  </section>
+
+  <section class="category">
+    <form action="/transactions/tag" method="get">
+      <!-- <label for="category-select">Category</label> -->
+        <select name="tag_id" class="inline">
+          <option value="" disabled selected>Choose a category</option>
+          <% @tags.each do |tag| %>
+          <option value="<%= tag.id %>" id="tag_id"><%= tag.category %></option>
+          <% end %>
+        </select>
+      <input type="submit" value="Filter">
+    </form>
+  </section>
+
+  <section class="category">
+    <h4>You've spent <span class="bold">£<%= '%.2f' % @total_spent_by_tag %></span> on <%= @chosen_tag.category %></h4>
+  </section>
+
+  <table>
+    <tr>
+      <th>Amount</th>
+      <th>Merchant</th>
+      <th>Date</th>
+      <th>Category</th>
+    </tr>
+    <% @transactions.each do |transaction| %>
+    <tr>
+      <td><%= transaction.transaction_date %></td>
+      <td><%= transaction.merchant_name %></td>
+      <td>£<%= '%.2f' % transaction.amount %></td>
+      <td><%= transaction.tag %></td>
+    </tr>
     <% end %>
-  </select>
-  <input type="submit" value="Filter">
-</form>
+  </table>
 
-<h3>You've spent £<%= '%.2f' % @total_spent_by_tag %> on <%= @chosen_tag.category %></h3>
-
-
-<% @transactions.each do |transaction| %>
-<article>
-  <p>Amount: £<%= '%.2f' % transaction.amount %></p>
-  <p>Merchant: <%= transaction.merchant_name %></p>
-  <p>Date: <%= transaction.transaction_date %></p>
-</article>
-<% end %>
+</div>

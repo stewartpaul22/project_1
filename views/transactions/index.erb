@@ -1,10 +1,15 @@
 <header>
-  <h2>You've spent £<%= '%.2f' % @total_spent %></h2>
-  <h2>Budget remaining £<%= '%.2f' % @remaining_funds %></h2>
+  <h2 class="spent">You've spent <span class="bold">£<%= '%.2f' % @total_spent %></span></h2>
+  <h2 class="remaining">Budget remaining <span class="bold">£<%= '%.2f' % @remaining_funds %></span></h2>
 </header>
 
 <div class="main">
-  <table class="transactions">
+
+  <section class="category">
+    <h3>All Transactions</h3>
+  </section>
+
+  <table>
     <tr>
       <th>Amount</th>
       <th>Merchant</th>
@@ -13,9 +18,9 @@
     </tr>
     <% @transactions.each do |transaction| %>
     <tr>
-      <td>£<%= '%.2f' % transaction.amount %></td>
-      <td><%= transaction.merchant_name %></td>
       <td><%= transaction.transaction_date %></td>
+      <td><%= transaction.merchant_name %></td>
+      <td>£<%= '%.2f' % transaction.amount %></td>
       <td><%= transaction.tag %></td>
     </tr>
     <% end %>

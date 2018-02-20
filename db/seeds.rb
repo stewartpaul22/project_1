@@ -50,7 +50,7 @@ tag5 = Tag.new({
   })
 tag5.save()
 tag6 = Tag.new({
-  "category" => "pubs/restaurants/cafes"
+  "category" => "dining"
   })
 tag6.save()
 
