@@ -73,7 +73,20 @@ header > h2.remaining {
   font-size: 1.3em;
   background-color: #7dc95e;
   border-bottom: 1px solid #aaa;
+}
 
+header > h2.remaining_amber {
+  padding: 10px 0;
+  font-size: 1.3em;
+  background-color: orange;
+  border-bottom: 1px solid #aaa;
+}
+
+header > h2.remaining_red {
+  padding: 10px 0;
+  font-size: 1.3em;
+  background-color: red;
+  border-bottom: 1px solid #aaa;
 }
 
 nav {
@@ -161,7 +174,7 @@ select {
   padding: 8px 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  background-color: #f1f1f1;
+  background-color: #ddd;
 }
 
 select.inline {
