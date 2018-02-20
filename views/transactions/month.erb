@@ -12,16 +12,17 @@
 <div class="main">
 
   <section class="category">
-    <h3>Transactions by Category</h3>
+    <h3>Transactions by Month</h3>
   </section>
 
   <section class="category">
-    <form action="/transactions/tag" method="get">
-      <!-- <label for="category-select">Category</label> -->
-        <select name="tag_id" class="inline" autofocus>
-          <option value="" disabled selected>Choose a category</option>
-          <% @tags.each do |tag| %>
-          <option value="<%= tag.id %>" id="tag_id"><%= tag.category %></option>
+    <form action="/transactions/month" method="get">
+        <select name="month_id" class="inline" autofocus>
+          <option value="" disabled selected>Choose a month</option>
+          <% counter = 0 %>
+          <% @months.each do |month| %>
+          <% counter += 1 %>
+          <option value="<%= counter %>" id="counter"><%= month %></option>
           <% end %>
         </select>
       <input type="submit" value="Filter">
@@ -29,7 +30,7 @@
   </section>
 
   <section class="category">
-    <h4>You've spent <span class="bold">£<%= '%.2f' % @total_spent_by_tag %></span> on <%= @chosen_tag.category %></h4>
+    <h4>You spent <span class="bold">£<%= '%.2f' % @total_spent_by_month %></span> in <%= @chosen_month %></h4>
   </section>
 
   <table>

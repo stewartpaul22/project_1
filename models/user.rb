@@ -82,21 +82,20 @@ class User
     transactions.each { |transaction| total += transaction.amount }
     return total.to_f
   end
-
-
-
   # ******* EXTENSIONS *********
+  def all_transactions_by_month(month)
+    sql = "SELECT * FROM transactions WHERE date_part('month', transaction_date) = $1"
+    values = [month]
+    results = SqlRunner.run( sql, values )
+    return results.map { |transaction| Transaction.new( transaction )}
+  end
 
-  # return all_transactions_by_month instance method
-  # create query string to return all transactions by month
-  # create parameters to pass into the query string
-  # return array of hases by executing the query using the sql_runner.rb run method
-  # use the map() method to convert to an array of transaction objects
-
-  # return total_spend_by_month instance method
-  # call all_transactions_by_month
-  # sum() all transactions
-  # return sum
+  def total_spent_by_month(month)
+    transactions = all_transactions_by_month(month)
+    total = 0
+    transactions.each { |transaction| total += transaction.amount }
+    return total.to_f
+  end
 
 
 
