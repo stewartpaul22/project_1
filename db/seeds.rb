@@ -9,7 +9,7 @@ Tag.delete_all()
 Transaction.delete_all()
 
 user1 = User.new({
-  "name" => "Paul",
+  "name" => "George",
   "net_monthly_income" => 1_610.67,
   "monthly_budget" => 1_050.00
   })
@@ -17,14 +17,14 @@ user1 = User.new({
 user1.save()
 
 user2 = User.new({
-  "name" => "Jeff",
+  "name" => "Eric",
   "net_monthly_income" => 2_304.23,
   "monthly_budget" => 1_850.00
   })
 
 user2.save()
 
-user1.name = "John"
+user1.name = "Jeff"
 user1.net_monthly_income = 1_790.88
 user1.monthly_budget = 1_000.00
 user1.update()
