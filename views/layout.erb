@@ -19,17 +19,23 @@
       <li><a href="/transactions/month">By Month</a></li>
       <li><a href="/transactions/new">Add+</a></li>
     </ul>
-  </nav>
+  </nav>  
 
   <header>
+
     <h2 class="spent">You've spent <span class="bold">£<%= '%.2f' % @total_spent %></span></h2>
-    <% if @remaining_funds < 0 %>
-      <h2 class="remaining_red">Budget remaining <span class="bold">£<%= '%.2f' % @remaining_funds %></span></h2>
-    <% elsif @remaining_funds < (@monthly_budget / 2) %>
-      <h2 class="remaining_amber">Budget remaining <span class="bold">£<%= '%.2f' % @remaining_funds %></span></h2>
+    <h2 class="
+
+    <% if (@remaining_funds < 0) %>
+    <%= 'remaining_red' %>
+    <% elsif (@remaining_funds < (@monthly_budget / 2)) %>
+    <%= 'remaining_amber' %>
     <% else %>
-      <h2 class="remaining">Budget remaining <span class="bold">£<%= '%.2f' % @remaining_funds %></span></h2>
+    <%= 'remaining' %>
     <% end %>
+
+    ">Budget remaining <span class="bold">£<%= '%.2f' % @remaining_funds %></span></h2>
+
   </header>
 
   <%= yield %>
