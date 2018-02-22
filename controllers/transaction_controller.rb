@@ -1,5 +1,5 @@
 require( 'sinatra' )
-require( 'sinatra/contrib/all' )
+# require( 'sinatra/contrib/all' )
 require_relative( '../models/user.rb' )
 require_relative( '../models/transaction.rb' )
 require_relative( '../models/tag.rb' )
@@ -54,4 +54,25 @@ post '/transactions' do
   @total_spent = user.total_spent().round(2)
   @remaining_funds = user.budget_remaining().round(2)
   erb( :"transactions/create")
+end
+
+# edit
+get "/transactions/:id/edit" do
+  user = User.find(1)
+  @monthly_budget = user.monthly_budget.round(2)
+  @total_spent = user.total_spent().round(2)
+  @remaining_funds = user.budget_remaining().round(2)
+  @tags = Tag.all()
+  @transaction = Transaction.find(params[:id])
+  erb(:"transactions/edit")
+end
+
+post "/transactions/:id" do
+  user = User.find(1)
+  @monthly_budget = user.monthly_budget.round(2)
+  @total_spent = user.total_spent().round(2)
+  @remaining_funds = user.budget_remaining().round(2)
+  @transaction = Transaction.new(params)
+  @transaction.update()
+  erb(:"transactions/update")
 end

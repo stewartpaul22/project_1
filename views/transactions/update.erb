@@ -1,7 +1,7 @@
 <header>
   <h2 class="spent">You've spent <span class="bold">£<%= '%.2f' % @total_spent %></span></h2>
   <% if @remaining_funds < 0 %>
-    <h2 class="remaining_red">Budget remaining <span class="bold">£<%= '%.2f' % @remaining_funds %></span></h2>
+  <h2 class="remaining_red">Budget remaining <span class="bold">£<%= '%.2f' % @remaining_funds %></span></h2>
   <% elsif @remaining_funds < (@monthly_budget / 2) %>
     <h2 class="remaining_amber">Budget remaining <span class="bold">£<%= '%.2f' % @remaining_funds %></span></h2>
   <% else %>
@@ -12,7 +12,7 @@
 <div class="main">
 
   <section class="category">
-    <h3>All Transactions</h3>
+    <h3>Transaction updated successfully</h3>
   </section>
 
   <table>
@@ -22,13 +22,12 @@
       <th>Amount</th>
       <th>Category</th>
     </tr>
-    <% @transactions.each do |transaction| %>
     <tr>
-      <td><%= transaction.transaction_date %></td>
-      <td><%= transaction.merchant_name %></td>
-      <td>£<%= '%.2f' % transaction.amount %></td>
-      <td><%= transaction.tag %></td>
+      <td><%= @transaction.transaction_date %></td>
+      <td><%= @transaction.merchant_name %></td>
+      <td>£<%= '%.2f' % @transaction.amount %></td>
+      <td><%= @transaction.tag %></td>
     </tr>
-    <% end %>
   </table>
+
 </div>
