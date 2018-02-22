@@ -1,14 +1,3 @@
-<header>
-  <h2 class="spent">You've spent <span class="bold">£<%= '%.2f' % @total_spent %></span></h2>
-  <% if @remaining_funds < 0 %>
-  <h2 class="remaining_red">Budget remaining <span class="bold">£<%= '%.2f' % @remaining_funds %></span></h2>
-  <% elsif @remaining_funds < (@monthly_budget / 2) %>
-    <h2 class="remaining_amber">Budget remaining <span class="bold">£<%= '%.2f' % @remaining_funds %></span></h2>
-  <% else %>
-    <h2 class="remaining">Budget remaining <span class="bold">£<%= '%.2f' % @remaining_funds %></span></h2>
-  <% end %>
-</header>
-
 <div class="main">
 
   <section class="category">
