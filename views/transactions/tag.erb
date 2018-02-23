@@ -16,7 +16,7 @@
     </form>
   </section>
 
-<% if @transactions[0] != nil %>
+<% if @transactions.any? %>
 
   <section class="category">
     <h4>You've spent <span class="bold">£<%= '%.2f' % @total_spent_by_tag %></span> on <%= @chosen_tag.category %></h4>
@@ -38,6 +38,11 @@
     </tr>
     <% end %>
   </table>
+
+  <% elsif params[:tag_id] == nil %>
+
+  <section>
+  </section>
 
 <% else %>
 
