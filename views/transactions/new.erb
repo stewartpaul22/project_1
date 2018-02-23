@@ -13,7 +13,7 @@
     <input type="text" name="amount" id="amount" placeholder="e.g. 15.55" required />
 
     <label for="category-select">Select Category: </label>
-    <select name="tag_id">
+    <select name="tag_id" required>
       <option value="" disabled selected>Category</option>
       <% @tags.each do |tag| %>
       <option value="<%= tag.id %>" id="tag_id"><%= tag.category %></option>
