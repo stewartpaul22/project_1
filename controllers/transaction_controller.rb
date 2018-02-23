@@ -39,10 +39,12 @@ get '/transactions/month' do
   @monthly_budget = user.monthly_budget.round(2)
   @total_spent = user.total_spent().round(2)
   @remaining_funds = user.budget_remaining().round(2)
-  @months = %w[January February March April May June July August September October November December]
-  @chosen_month = @months[(params[:month_id].to_i) - 1]
-  @total_spent_by_month = user.total_spent_by_month(params[:month_id].to_i)
   @transactions = user.all_transactions_by_month(params[:month_id])
+  @months = %w[January February March April May June July August September October November December]
+  if params[:month_id].to_i != 0
+    @chosen_month = @months[(params[:month_id].to_i) - 1]
+  end
+  @total_spent_by_month = user.total_spent_by_month(params[:month_id].to_i)
   erb( :"transactions/month")
 end
 

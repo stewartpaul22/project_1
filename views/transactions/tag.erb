@@ -6,8 +6,7 @@
 
   <section class="category">
     <form action="/transactions/tag" method="get">
-      <!-- <label for="category-select">Category</label> -->
-        <select name="tag_id" class="inline" autofocus>
+        <select name="tag_id" class="inline">
           <option value="" disabled selected>Choose a category</option>
           <% @tags.each do |tag| %>
           <option value="<%= tag.id %>" id="tag_id"><%= tag.category %></option>
@@ -16,6 +15,8 @@
       <input type="submit" value="Filter">
     </form>
   </section>
+
+<% if @transactions[0] != nil %>
 
   <section class="category">
     <h4>You've spent <span class="bold">£<%= '%.2f' % @total_spent_by_tag %></span> on <%= @chosen_tag.category %></h4>
@@ -37,5 +38,13 @@
     </tr>
     <% end %>
   </table>
+
+<% else %>
+
+<section class="category">
+  <h4>You've spent not spent anything on <%= @chosen_tag.category %></h4>
+</section>
+
+<% end %>
 
 </div>

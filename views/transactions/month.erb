@@ -6,7 +6,7 @@
 
   <section class="category">
     <form action="/transactions/month" method="get">
-        <select name="month_id" class="inline" autofocus>
+        <select name="month_id" class="inline">
           <option value="" disabled selected>Choose a month</option>
           <% counter = 0 %>
           <% @months.each do |month| %>
@@ -17,6 +17,8 @@
       <input type="submit" value="Filter">
     </form>
   </section>
+
+<% if @transactions.any? %>
 
   <section class="category">
     <h4>You spent <span class="bold">£<%= '%.2f' % @total_spent_by_month %></span> in <%= @chosen_month %></h4>
@@ -38,5 +40,20 @@
     </tr>
     <% end %>
   </table>
+
+
+<% elsif params[:month_id] == nil %>
+
+<section>
+</section>
+
+<% elsif params[:month_id].to_i != nil && @total_spent_by_month == 0 %>
+
+<section class="category">
+  <h4>There are no transactions for <%= @chosen_month %></h4>
+</section>
+
+
+<% end %>
 
 </div>
