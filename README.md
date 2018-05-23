@@ -17,3 +17,10 @@ You must be able to create new Transactions ( which should include a merchant na
 - Show a warning when the total expenditure is over budget (set a hard coded budget first)
 - Add a date to the transactions and view total spending by month
 - Any other ideas you might come up with
+
+### To run the app:
+
+- Create a PostgreSQL database called 'moneycashboard'
+- From the root directory run the command 'ruby app.rb'
+
+
